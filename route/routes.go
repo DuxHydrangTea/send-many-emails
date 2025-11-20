@@ -12,6 +12,6 @@ func InitRoutes(app *fiber.App){
         return c.SendString("Hello, World! KKK")
     })
 
-    api.Get("/:email", controllers.Register)
     api.Get("/send-mails", controllers.SendManyEmails)
+    api.Get("/:email", controllers.Register)
 }

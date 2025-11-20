@@ -27,10 +27,9 @@ func Register(c *fiber.Ctx) error {
 func SendManyEmails(c *fiber.Ctx) error {
 	emails := []string{}
 
-	// for i := 1; i <= 40; i++{
-	// 	emails = append(emails, fmt.Sprintf("user%d@gmail.com", i))
-	// }
-	emails = append(emails, "ngocdung2002d@gmail.com")
+	for i := 1; i <= 40; i++{
+		emails = append(emails, "ngocdung2002d@gmail.com")
+	}
 
 	mail.SendMassEmail(emails)
 	
