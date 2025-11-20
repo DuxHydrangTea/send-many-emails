@@ -83,15 +83,15 @@ func worker(id int, jobs <-chan EmailJob, wg *sync.WaitGroup){
             if s == nil {
                 log.Printf("[Worker %d] Failed to reconnect, skipping job for %s", id, job.To)
                 break
-        }
-    }
+        	}
+    	}
+	}
 }
 
-
-func SendMassEmail(users []string){
+func SendMassEmail(userEmails []string){
 	const workCount = 20
 
-	jobs := make(chan EmailJob, len(users))
+	jobs := make(chan EmailJob, len(userEmails))
 
 	var wg sync.WaitGroup
 
@@ -100,7 +100,7 @@ func SendMassEmail(users []string){
 		go worker(w, jobs, &wg)
 	}
 
-	for _, email := range users {
+	for _, email := range userEmails {
 		jobs <- EmailJob{
 			To: email,
 			Subject: "Ey cuuuuuuuu",
